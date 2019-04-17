@@ -12,8 +12,9 @@
     <input type="url">
     <button type="submit">Upload</button>
   </form>
-  <form action="/uploadIMG" method="POST">
-    <input type="file">
+  <form action="/uploadIMG" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="sessionID" value="<%= sessionID %>">
+    <input type="file" name="meme">
     <button type="submit">Upload</button>
   </form>
 </body>
