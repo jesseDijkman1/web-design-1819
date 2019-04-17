@@ -13,9 +13,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage})
 
-const port = 3000,
-      users = {},
-      memes = {}
+const port = 3000;
+
+let users = {},
+    memes = {}
 
 const app = express();
 
@@ -39,10 +40,37 @@ class Meme {
   }
 }
 
+function cleanImgStorage(sessions) {
+  const allSessions = Object.keys(sessions);
+
+  fs.readdir("tempImgStorage", (err, files) => {
+    files.forEach(file => {
+      const rx = /(?<=meme-).[^\.]+(?=.\w+)/;
+      const fileId = rx.exec(file)[0]
+
+      if (!allSessions.includes(fileId)) {
+        fs.unlink(`tempImgStorage/${file}`, (error) => {
+          if (error) throw error;
+        });
+      }
+    })
+  })
+
+  if (Object.keys(memes).length) {
+    for (let meme in memes) {
+      if (!allSessions.includes(memes[meme].userID)) {
+        memes[meme].remove()
+      }
+    }
+  }
+}
+
 app.get("/", (req, res) => {
   if (memes[req.session.id]) {
     memes[req.session.id].remove()
   }
+
+  cleanImgStorage(req.sessionStore.sessions)
 
   res.render("index.ejs", {
     sessionID: req.session.id
