@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,73 @@
   <link rel="stylesheet" href="./css/styles.css">
   <title>Meme-Maker</title>
 </head>
+
 <body>
-  <h1>Add text</h1>
+  <main>
+    <canvas id="meme-canvas" widht="500" height="500" data-img="<%= imgName %>"></canvas>
+    <form id="meme-editor">
+      <input id="add-txt" class="visuallyhidden section-toggler" type="checkbox" checked>
+      <label for="add-txt">Add Text</label>
+      <fieldset class="editor-section meme-txt">
+        <div class="input-container">
+          <label for="top-txt">Top Text</label>
+          <input id="top-txt" class="update-key" type="text">
+        </div>
+
+        <div class="input-container">
+          <label for="bottom-txt">Bottom Text</label>
+          <input id="bottom-txt" class="update-key" type="text">
+        </div>
+      </fieldset>
+
+
+      <input id="add-txt-size" class="visuallyhidden section-toggler" type="checkbox">
+      <label for="add-txt-size">Font Size</label>
+
+      <fieldset class="editor-section meme-txt-size">
+        <div class="input-container">
+          <label for="top-txt-size">Top Text Size</label>
+          <input id="top-txt-size" type="number">
+        </div>
+        <div class="input-container">
+          <label for="bottom-txt-size">Bottom Text Size</label>
+          <input id="bottom-txt-size" type="number">
+        </div>
+      </fieldset>
+
+      <input id="add-txt-color" class="visuallyhidden section-toggler" type="checkbox">
+      <label for="add-txt-color">Font Color</label>
+
+      <fieldset class="editor-section meme-txt-color">
+        <input id="section-type-rgb" class="visuallyhidden" type="radio" name="color-section-type" checked>
+        <input id="section-type-hsl" class="visuallyhidden" type="radio" name="color-section-type">
+
+        <label for="section-type-rgb">RGB</label>
+        <label for="section-type-hsl">HSL</label>
+
+
+        <section class="color-type rgb">
+          <label for="txt-color-rgb">Text Color</label>
+          <input id="txt-color-rgb" type="text">
+
+          <input type="range">
+          <input type="range">
+          <input type="range">
+        </section>
+
+        <section class="color-type hsl">
+          <label for="txt-color-hsl">Text Color</label>
+          <input id="txt-color-hsl" type="text">
+
+          <input type="range">
+          <input type="range">
+          <input type="range">
+        </section>
+
+      </fieldset>
+    </form>
+  </main>
+  <script src="./js/index.js"></script>
 </body>
+
 </html>

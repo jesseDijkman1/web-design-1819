@@ -66,7 +66,10 @@ app.get("/meme-maker", (req, res) => {
       break;
 
     case 2:
-      res.render("textAdd.ejs", {sessionID: sessionID})
+      res.render("textAdd.ejs", {
+        sessionID: sessionID,
+        imgName: memes[sessionID].imgName
+      })
       break;
   }
 })
@@ -75,6 +78,7 @@ app.post('/uploadIMG', upload.single("meme"), (req, res) => {
   const sessionID = req.body.sessionID,
         fileName = req.file.filename;
 
+  console.log(req.file)
   memes[sessionID].imgName = fileName;
 
   res.redirect(`/meme-maker?s=2&id=${sessionID}`)

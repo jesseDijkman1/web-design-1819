@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr
+}
+
+#meme-canvas {
+  max-width: 700px;
+  height: auto;
+  border: solid 1px black;
+}
+
+.visuallyhidden {
+  position: absolute;
+  z-index: -10;
+  right: 105%;
+  opacity: 0;
+}
+
+#meme-editor {
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.color-type {
+  display: none;
+}
+
+.editor-section {
+  display: none;
+  margin-bottom: 1rem;
+}
+
+.section-toggler:focus + label {
+  color: green;
+}
+.section-toggler:checked + label {
+  text-decoration: underline;
+}
+
+.section-toggler:checked + label + .editor-section {
+  display: block;
+}
+
+#section-type-rgb:checked ~ [for="section-type-rgb"] {
+  color: blue;
+}
+
+
+#section-type-rgb:checked ~ .color-type.rgb {
+  display: block;
+}
+
+#section-type-hsl:checked ~ [for="section-type-hsl"] {
+  color: blue;
+}
+#section-type-hsl:checked ~ .color-type.hsl {
+  display: block;
+}
