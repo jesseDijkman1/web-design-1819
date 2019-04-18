@@ -16,11 +16,7 @@ const bottomTxtPosInput = document.getElementById("bottom-txt-position");
 const colorSliders = document.querySelectorAll(".color-slider input[type=range]");
 const colorPreview = document.getElementById("color-preview");
 
-// class AvailableKeys {
-//   constructor(data) {
-//     this.keys = data;
-//   }
-// }
+const downloadBtn = document.getElementById("download-meme");
 
 class Meme {
   constructor(c) {
@@ -132,6 +128,15 @@ class Meme {
 
 const meme = new Meme(canvas);
 
+const keys = {
+  37: -1,
+  38: 10,
+  39: 1,
+  40: -10,
+  188: -30,
+  190: 30
+}
+
 topTxtInput.addEventListener("keydown", e => {
   setTimeout(() => meme.topTxt(e), 0)
 });
@@ -141,18 +146,43 @@ bottomTxtInput.addEventListener("keydown", e => {
 });
 
 topTxtSizeInput.addEventListener("keydown", e => {
+
+  if (keys[e.keyCode]) {
+    e.preventDefault()
+
+    e.target.value = parseInt(e.target.value) + keys[e.keyCode]
+  }
+
   setTimeout(() => meme.topTxtSize(e), 0)
 });
 
 bottomTxtSizeInput.addEventListener("keydown", e => {
+  if (keys[e.keyCode]) {
+    e.preventDefault()
+
+    e.target.value = parseInt(e.target.value) + keys[e.keyCode]
+  }
+
   setTimeout(() => meme.bottomTxtSize(e), 0)
 });
 
 topTxtPosInput.addEventListener("keydown", e => {
+  if (keys[e.keyCode]) {
+    e.preventDefault()
+
+    e.target.value = parseInt(e.target.value) + keys[e.keyCode]
+  }
+
   setTimeout(() => meme.topTxtPos(e), 0)
 })
 
 bottomTxtPosInput.addEventListener("keydown", e => {
+  if (keys[e.keyCode]) {
+    e.preventDefault()
+
+    e.target.value = parseInt(e.target.value) + keys[e.keyCode]
+  }
+
   setTimeout(() => meme.bottomTxtPos(e), 0)
 })
 
@@ -187,15 +217,15 @@ void function() {
       value: colorSliders[i].value,
       unit: colorSliders[i].dataset.unit || ""
     };
-
-    const keys = {
-      37: -1,
-      38: 10,
-      39: 1,
-      40: -10,
-      188: -30,
-      190: 30
-    }
+    //
+    // const keys = {
+    //   37: -1,
+    //   38: 10,
+    //   39: 1,
+    //   40: -10,
+    //   188: -30,
+    //   190: 30
+    // }
 
 
 

@@ -34,9 +34,13 @@ class Meme {
   }
 
   remove() {
-    fs.unlink(`tempImgStorage/${this.imgName}`, (err) => {
-      if (err) throw err;
-    });
+    fs.readdir("tempImgStorage", (err, files) => {
+      if (files.length) {
+        fs.unlink(`tempImgStorage/${this.imgName}`, (err) => {
+          if (err) throw err;
+        });
+      }
+    })
   }
 }
 
@@ -108,10 +112,13 @@ app.post('/uploadIMG', upload.single("meme"), (req, res) => {
   const sessionID = req.body.sessionID,
         fileName = req.file.filename;
 
-  console.log(req.file)
   memes[sessionID].imgName = fileName;
 
   res.redirect(`/meme-maker?s=2&id=${sessionID}`)
+})
+
+app.post("/saveMeme", upload.single("meme"), (req, res) => {
+  console.log(req.file)
 })
 
 app.listen(port, () => console.log(`Listening to port: ${port}`));
