@@ -13,6 +13,15 @@ const autoTxtPosInput = document.getElementById("auto-position");
 const topTxtPosInput = document.getElementById("top-txt-position");
 const bottomTxtPosInput = document.getElementById("bottom-txt-position");
 
+const colorSliders = document.querySelectorAll(".color-slider input[type=range]");
+const colorPreview = document.getElementById("color-preview");
+
+// class AvailableKeys {
+//   constructor(data) {
+//     this.keys = data;
+//   }
+// }
+
 class Meme {
   constructor(c) {
     this.cWidth;
@@ -114,6 +123,11 @@ class Meme {
 
     this.update()
   }
+
+  updateTxtColor(color) {
+    this.color = color;
+    this.update()
+  }
 }
 
 const meme = new Meme(canvas);
@@ -146,58 +160,106 @@ autoTxtPosInput.addEventListener("change", e => {
   setTimeout(() => meme.autoTxtPos(e), 0)
 })
 
-// let img;
-// let imgSrc;
-//
-// let cWidth;
-// let cHeight;
-//
-// for (let i = 0; i < memeTxtInputs.length; i++) {
-//   memeTxtInputs[i].addEventListener("focus", liveTyper)
-// }
+void function() {
+  const colors = {}
 
-// imgSrc = canvas.dataset.img;
-// img = new Image()
-// img.src = imgSrc;
-// img.onload = e => {
-//   cWidth = e.target.width;
-//   cHeight = e.target.height;
-//
-//   canvas.setAttribute("width", cWidth)
-//   canvas.setAttribute("height", cHeight)
-//
-//   drawImage()
-// }
+  function updateColor(colorType) {
+    const type = colorType;
+    const data = colors[colorType];
 
-//
-// function drawImage() {
-//   ctx.drawImage(img, 0, 0);
-// }
-//
-// function liveTyper(e) {
-//   e.target.addEventListener("keydown", updateMemeText)
-// }
-//
-// function updateMemeText() {
-//   setTimeout(() => {
-//     drawImage()
-//
-//     ctx.font = "30px system-ui";
-//
-//     for (let i = 0; i < memeTxtInputs.length; i++) {
-//       let topTxt = "";
-//       let bottomTxt = "";
-//
-//       if (memeTxtInputs[i].classList.contains("top")) {
-//         topTxt = memeTxtInputs[i].value;
-//       }
-//
-//       if (memeTxtInputs[i].classList.contains("bottom")) {
-//         bottomTxt = memeTxtInputs[i].value;
-//       }
-//       ctx.fillText(topTxt, 10, 50);
-//       ctx.fillText(bottomTxt, 10, cHeight - 50);
-//     }
-//   }, 0)
-// }
-// })()
+    const color = `${type}(${Object.keys(data).map(key => {
+      return `${data[key].value}${data[key].unit}`
+    }).join(",")})`
+
+    colorPreview.style.setProperty("background", color)
+
+    meme.updateTxtColor(color);
+  }
+
+
+
+  for (let i = 0; i < colorSliders.length; i++) {
+    if (!colors[colorSliders[i].dataset.colorType]) {
+      colors[colorSliders[i].dataset.colorType] = {}
+    }
+
+    colors[colorSliders[i].dataset.colorType][colorSliders[i].dataset.char] = {
+      value: colorSliders[i].value,
+      unit: colorSliders[i].dataset.unit || ""
+    };
+
+    const keys = {
+      37: -1,
+      38: 10,
+      39: 1,
+      40: -10,
+      188: -30,
+      190: 30
+    }
+
+
+
+    let valDisplay;
+
+    if (colorSliders[i].nextElementSibling.classList.contains("slider-val")) {
+      valDisplay = colorSliders[i].nextElementSibling
+      valDisplay.max = colorSliders[i].max;
+      valDisplay.min = colorSliders[i].min;
+      valDisplay.value = colorSliders[i].value;
+    }
+
+    valDisplay.addEventListener("keydown", (e) => {
+      let val = parseInt(colorSliders[i].value);
+
+      if (keys[e.keyCode]) {
+        e.preventDefault()
+
+        val += keys[e.keyCode];
+      }
+
+      if (val < parseInt(colorSliders[i].max) && val > parseInt(colorSliders[i].min)) {
+        colorSliders[i].value = val;
+      } else {
+        if (val >= parseInt(colorSliders[i].max)) {
+          colorSliders[i].value = colorSliders[i].max
+        } else {
+          colorSliders[i].value = colorSliders[i].min
+        }
+      }
+
+      colorSliders[i].value = val;
+
+      colors[colorSliders[i].dataset.colorType][colorSliders[i].dataset.char].value = val;
+
+      updateColor(colorSliders[i].dataset.colorType)
+    })
+
+    colorSliders[i].addEventListener("keydown", (e) => {
+      let val = parseInt(colorSliders[i].value);
+
+      if (keys[e.keyCode]) {
+        e.preventDefault()
+
+        val += keys[e.keyCode];
+
+        colorSliders[i].value = val;
+
+        valDisplay.value = colorSliders[i].value;
+
+        colors[colorSliders[i].dataset.colorType][colorSliders[i].dataset.char].value = val;
+
+        updateColor(colorSliders[i].dataset.colorType)
+      }
+    })
+
+    colorSliders[i].addEventListener("change", (e) => {
+      valDisplay.value = colorSliders[i].value;
+
+      colors[colorSliders[i].dataset.colorType][colorSliders[i].dataset.char].value = colorSliders[i].value;
+
+      updateColor(colorSliders[i].dataset.colorType)
+    })
+  }
+
+  updateColor("rgb");
+}()

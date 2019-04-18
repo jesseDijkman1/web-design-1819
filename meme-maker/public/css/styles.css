@@ -67,3 +67,8 @@ main {
 .disable-next:checked ~ .input-container {
   display: none;
 }
+
+#color-preview {
+  width: 50px;
+  height: 50px;
+}
