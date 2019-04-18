@@ -43,6 +43,14 @@ class Meme {
 function cleanImgStorage(sessions) {
   const allSessions = Object.keys(sessions);
 
+  if (Object.keys(memes).length) {
+    for (let meme in memes) {
+      if (!allSessions.includes(memes[meme].userID)) {
+        memes[meme].remove()
+      }
+    }
+  }
+
   fs.readdir("tempImgStorage", (err, files) => {
     files.forEach(file => {
       const rx = /(?<=meme-).[^\.]+(?=.\w+)/;
@@ -56,13 +64,7 @@ function cleanImgStorage(sessions) {
     })
   })
 
-  if (Object.keys(memes).length) {
-    for (let meme in memes) {
-      if (!allSessions.includes(memes[meme].userID)) {
-        memes[meme].remove()
-      }
-    }
-  }
+
 }
 
 app.get("/", (req, res) => {

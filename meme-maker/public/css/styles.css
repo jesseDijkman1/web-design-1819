@@ -63,3 +63,7 @@ main {
 #section-type-hsl:checked ~ .color-type.hsl {
   display: block;
 }
+
+.disable-next:checked ~ .input-container {
+  display: none;
+}

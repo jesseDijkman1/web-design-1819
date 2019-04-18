@@ -42,6 +42,23 @@
         </div>
       </fieldset>
 
+      <input id="add-txt-position" class="visuallyhidden section-toggler" type="checkbox">
+      <label for="add-txt-position">Text Position</label>
+
+      <fieldset class="editor-section meme-txt-position">
+        <label for="auto-position">Auto</label>
+        <input id="auto-position" class="disable-next" type="checkbox" checked>
+
+        <div class="input-container">
+          <label for="top-txt-position">Top Text Position</label>
+          <input id="top-txt-position" type="number">
+        </div>
+        <div class="input-container">
+          <label for="bottom-txt-position">Bottom Text Position</label>
+          <input id="bottom-txt-position" type="number">
+        </div>
+      </fieldset>
+
       <input id="add-txt-color" class="visuallyhidden section-toggler" type="checkbox">
       <label for="add-txt-color">Font Color</label>
 
@@ -54,21 +71,37 @@
 
 
         <section class="color-type rgb">
-          <label for="txt-color-rgb">Text Color</label>
-          <input id="txt-color-rgb" type="text">
+          <div class="color-slider">
+            <label for="rgb-red">R</label>
+            <input id="rgb-red" type="range" min="0" max="255" data-char="r">
+          </div>
 
-          <input type="range">
-          <input type="range">
-          <input type="range">
+          <div class="color-slider">
+            <label for="rgb-green">G</label>
+            <input id="rgb-green" type="range" min="0" max="255" data-char="g">
+          </div>
+
+          <div class="color-slider">
+            <label for="rgb-blue">B</label>
+            <input id="rgb-blue" type="range" min="0" max="255" data-char="b">
+          </div>
         </section>
 
         <section class="color-type hsl">
-          <label for="txt-color-hsl">Text Color</label>
-          <input id="txt-color-hsl" type="text">
+          <div class="color-slider">
+            <label for="hsl-hue">H</label>
+            <input id="hsl-hue" type="range" min="0" max="360" data-char="h">
+          </div>
 
-          <input type="range">
-          <input type="range">
-          <input type="range">
+          <div class="color-slider">
+            <label for="hsl-saturation">S</label>
+            <input id="hsl-saturation" type="range" min="0" max="100" data-char="s">
+          </div>
+
+          <div class="color-slider">
+            <label for="hsl-lightness">L</label>
+            <input id="hsl-lightness" type="range" min="0" max="100" data-char="l">
+          </div>
         </section>
 
       </fieldset>
