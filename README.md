@@ -6,11 +6,18 @@ For this course we're going to design and make an accessible "component", like: 
 ## Table of Contents
 - [Concept](#concept-)
 - [User Scenario](#user-scenario-)
+  - [Version 1](#version-1-)
+  - [Version 2](#version-2-)
 - [Test 1](#test-1-)
+  - [Insights](#insights-1-)
   - [Iteration 1](#iteration-1-)
+  - [Comparison 1](#comparison-1-)
 - [Test 2](#test-2-)
+  - [Insights 2](#insights-2-)
   - [Iteration 2](#iteration-2-)
 - [Things to Add](#things-to-add-)
+- [Sources](#sources-)
+- [License](#license-)
 
 ---
 
@@ -32,7 +39,7 @@ Marijn is at home with his laptop looking, at memes. He'd like to make a meme hi
 #### Date: 18-04-2019
 Because the week prior, Marijn didn't make it, this was our first test. When he entered the room I was a bit surprised by how severe his disability was. When the tests started, you could already tell that he didn't use the web at the same speed as us, not even close actually. By observing I saw he had trouble with accuracy. And almost right from the start we found out that he doesn't use the tab key. He mainly uses the spacebar, sticky keys, arrow keys and also the trackpad to my surprise. This meant that a lot of the other student weren't able to test well; because the tab key on his laptop didn't work. Because he uses his trackpad, I asked if he'd rather have big buttons. He said yes, which actually was the main feedback.
 
-### Insights
+### Insights 1
 - **He does not use the tab key**
 - **He does use the trackpad, spacebar and the arrow keys and sticky keys**
 - **Buttons need to be big and close together**
@@ -52,7 +59,7 @@ So this is what I did ... 25th of April, the day of test 2 😅.
 I removed the image upload, and added an API which provides me with a lot of meme-formats [API link](https://api.imgflip.com/).
 I implemented navigation with arrow keys and spacebar, seperated the editor into sections.
 
-### Comparison
+### Comparison 1
 #### Page 1 (old-new)
 ![Page 1 comparison](./images/meme-s-1.png)
 
@@ -68,7 +75,7 @@ I implemented navigation with arrow keys and spacebar, seperated the editor into
 #### Date: 25-04-2019
 This week, one day before the deadline we had another test session with Marijn. I was the last one. I was worried as always that it wouldn't go well, but ... it wen't pretty great actually. When he started looking for meme-formats on page 2, I saw that the first element (which has an automatic focus) lost focus immediately; probably due to a misclick or wrong button press. So the arrow keys didn't realy work there like I intended but he could scroll with them. Then he wen't on to add the top text, which worked, it looked like he had a bit of trouble with the arrow keys, because I think focus was lost again (but I'm not sure). He went through these steps at a pretty decent pace. Moving the text worked, changing the size worked. The only feedback I got was from Vasilis.
 
-### Insights
+### Insights 2
 - **Better default (like automatic text size, black border around the text**
 - **Maybe a skip button**
 
