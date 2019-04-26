@@ -53,25 +53,26 @@ I removed the image upload, and added an API which provides me with a lot of mem
 I implemented navigation with arrow keys and spacebar, seperated the editor into sections.
 
 ### Comparison
-#### Page 1
+#### Page 1 (old-new)
 ![Page 1 comparison](./images/meme-s-1.png)
 
-#### Page 2
+#### Page 2 (old-new)
 ![Page 2 comparison](./images/meme-s-2.png)
 
-#### Page 3
-![Page 3 comparison](./images/meme-s-3-png)
+#### Page 3 (old-new)
+![Page 3 comparison](./images/meme-s-3.png)
 
 ---
 
 ## Test 2
 #### Date: 25-04-2019
-This week, one day before the deadline we had another test-session with Marijn. I was the last one. I was worried as always that it wouldn't go well, but ... it wen't pretty great actually. When he started with looking for meme-formats, I saw that the first element (which has an automatic focus) lost focus immediately; probably due to a misclick or wrong button press. So the arrow keys didn't realy work there but he didn't really have any trouble, because they were all close together and large. Then he wen't on to add the top text, which worked, it looked like he had a bit of trouble with the arrow keys, because I think focus was lost again (but I'm not sure). He went through these steps at pretty decent pace. Moving the text worked, changing the size worked. 
+This week, one day before the deadline we had another test session with Marijn. I was the last one. I was worried as always that it wouldn't go well, but ... it wen't pretty great actually. When he started looking for meme-formats on page 2, I saw that the first element (which has an automatic focus) lost focus immediately; probably due to a misclick or wrong button press. So the arrow keys didn't realy work there like I intended but he could scroll with them. Then he wen't on to add the top text, which worked, it looked like he had a bit of trouble with the arrow keys, because I think focus was lost again (but I'm not sure). He went through these steps at a pretty decent pace. Moving the text worked, changing the size worked. The only feedback I got was from Vasilis.
 
-The only feedback I got was from Vasilis:
-- **Better defaults**
+### Insights
+- **Better default (like automatic text size, black border around the text**
+- **Maybe a skip button**
 
-I got this feedback because the text is white by default, and you couldn't read it when the background was white. Typically meme-text is white with a black border. Also the font isn't right, the main font used in memes is Impact.
+Better defaults refers to the fact that the text is white without a border, so when the background is white you can't see it. And the font is incorrect, it should be Immpact.
 
 ### Iteration 2
 Because we only had one day, I didn't get to iterate (maybe I did, but then you wouldn't be able to read this message 😮)
@@ -79,11 +80,20 @@ Because we only had one day, I didn't get to iterate (maybe I did, but then you 
 ---
 
 ## Things to Add
-Because the test session was one day prior to the deadline, I can't do everything I have on my mind. 
-The things I'd like to change are:
+There are some things I'd like to add:
 - A way to add more text, not just top and bottom
 - Font-selection
 - Ability to change colors (which was possible in my first app, which is located in this repo)
 - A way to switch between editing sections using the number keys or arrows
 - Easy skip-button
 
+---
+
+## Sources
+- [API](https://api.imgflip.com/)
+- Concept by [Koop Reynders](https://github.com/KoopReynders)), thanks
+
+---
+
+## License
+MIT © [Jesse Dijkman](https://github.com/jesseDijkman1)
