@@ -1,5 +1,5 @@
 # Web Design - Jesse Dijkman
-For this course we're going to design and make an accessible "component", like a date-picker, color-picker, or any other component that is relevant to our user. The user I'm going to design for is: Marijn Meijles. Marijn is spastic and can't use the web like the most of us. So I'm going to make something that is accessible for him and other people.
+For this course we're going to design and make an accessible "component", like: a date-picker, color-picker, or any other component that is usually difficult for people with disabilities to use. The user I'm going to design for is: Marijn Meijles. Marijn is spastic and can't use the web like the most of us. So I'm going to make something that is accessible for him and other people.
 
 ---
 
@@ -15,26 +15,52 @@ For this course we're going to design and make an accessible "component", like a
 ---
 
 ## Concept 💡
-My concept was a color-picker and it still is the main-component of my new concept (thanks to [Koop](https://github.com/KoopReynders)), which is a meme-maker. I don't know if Marijn is into memes, I hope so. But this seems like something that isn't accessible anywhere and can be made accessible.
+My concept was a color-picker and it was the main-component of my new concept (thanks to [Koop](https://github.com/KoopReynders)), which is a meme-maker. I don't know if Marijn is into memes, I hope so. If he's not into memes it doesn't matter, because he's just a representation of our target-audience. But this seems like something that isn't accessible anywhere and can be made accessible. 
 
 ---
 
 ## User Scenario 🤷‍
-Marijn is at home looking at memes, he'd like to make a meme himself. But he want to make it with a keyboard. He just needs to upload (or refer to) an image and use it as a template. He can type the text and adjust their positions. He could also add rectangles and circles, and move them using his keyboard to adjust his meme. After he's done he needs to be able to download the meme.
+### Version 1
+Marijn is at home looking at memes, he'd like to make a meme himself. But he has to create it with a keyboard. He just needs to upload (or refer to) an image and use it as a template. He can type the text and adjust their positions. He could also add rectangles and circles, and move them using his keyboard to adjust his meme. After he's done he needs to be able to download the meme.
+
+### Version 2
+Marijn is at home with his laptop looking, at memes. He'd like to make a meme himself. He looks for a meme-maker that you can use with arrow keys and that has large buttons; so he can use his trackpad aswell. He'd like to have a catalog with meme-formats that he can pick from. Now he just needs to add text, alter their sizes and colors and maybe add some other images. After he's done he'd like to download it as a PNG or JPEG.
 
 ---
 
 ## Test 1
 #### Date: 18-04-2019
-Marijn came to our school at 6:00 pm, and I was a bit surprised by how severe his disability was, although I watched his [interview](https://www.youtube.com/watch?v=8V25yphVEIo). The tests started and you could already tell that he didn't use the web at the same speed as us, not even close actually. By observing I saw he had trouble with accuracy. And almost right from the start we found out that he doesn't use the tab key. He mainly uses the spacebar, arrows and also the trackpad to my surprise. This meant that a lot of the other student weren't able to test well. So I asked if he'd rather have big buttons so he could use his trackpad. He said yes, which actually was the main feedback. After everyone was done testing his/her prototype, the school intercom announced that the school was going to close. And I actually had all the info I needed:
+Because the week prior, Marijn didn't make it, this was our first test. When he entered the room I was a bit surprised by how severe his disability was. When the tests started, you could already tell that he didn't use the web at the same speed as us, not even close actually. By observing I saw he had trouble with accuracy. And almost right from the start we found out that he doesn't use the tab key. He mainly uses the spacebar, sticky keys, arrow keys and also the trackpad to my surprise. This meant that a lot of the other student weren't able to test well; because the tab key on his laptop didn't work. Because he uses his trackpad, I asked if he'd rather have big buttons. He said yes, which actually was the main feedback.
+
+### Insights
 - **He does not use the tab key**
-- **He does use the trackpad, spacebar and the arrow keys**
+- **He does use the trackpad, spacebar and the arrow keys and sticky keys**
 - **Buttons need to be big and close together**
 
-These are the insight from just observing and asking two questions. So I didn't really feel like testing my app, because it didn't have really big buttons (more like medium-large). And the app was made to be used with tab or trackpad. Although I didn't test my own prototype I did gain important insights. 
+These are the insight from just observing and asking questions. At the end of the session the school intercom announced that the building was going to close. And because I gained important insights by just being there, and my prototype was tab focussed, I didn't feel like I needed to test my prototype. 
 
 ### Iteration 1
-The week after the tests I looked at my app, and first of decided that I didn't wan't him to upload images; because that's just an unnecessary step, which was annoying to complete with just your keys. So I looked for an API and found [one](https://api.imgflip.com/). This API has all kinds of meme-formats, and the greatest thing was... there was no need to create an account, and no authentication was needed; which for me was kind of a relief. So I used this API, created a grid like layout. Next step was to allow selection with arrow keys, and spacebar. Next step was to breakdown the editor into easily digestible sections. So now creating a meme is a step-by-step process. And because I couldn't really use the arrow keys for a number input, I made it so you can use your number keys to add-up; so if the value is 16 and you press 9, the outcome is 25.
+After the test I knew I had to change a lot. The main things I needed to change in my prototype were:
+- Make navigation possible through the use of the arrow keys and the spacebar
+- Make the buttons large and closer together
+- Seperate the meme-editor into easily digestible sections
+- Change the styling (Not important)
+- Scrap the ability to upload your own images (or maybe add this later)
+- Have list with meme-formats to choose from
+
+So this is what I did ... 25th of April, the day of test 2 😅.
+I removed the image upload, and added an API which provides me with a lot of meme-formats [API link](https://api.imgflip.com/).
+I implemented navigation with arrow keys and spacebar, seperated the editor into sections.
+
+### Comparison
+#### Page 1
+![Page 1 comparison](./images/meme-s-1.png)
+
+#### Page 2
+![Page 2 comparison](./images/meme-s-2.png)
+
+#### Page 3
+![Page 3 comparison](./images/meme-s-3-png)
 
 ---
 
